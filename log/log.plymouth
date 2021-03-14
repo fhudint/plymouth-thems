@@ -1,6 +1,6 @@
 [Plymouth Theme]
 Name=log
-Description=...
+Description=Splash screen with rotate Gear and booting log
 ModuleName=script
 
 [script]
