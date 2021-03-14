@@ -1,21 +1,10 @@
 /*********************************************************************************
- * Theme Name: COGWHEEL-A-SPINNER-LOG-PGR-2-DARK                                 *
+ * Theme Name: log				                                 *
  * Version: 1.0                                                                  *
- * Description: ...                                                              *
- * Author: DUKE93                                                                *
- * Date: 23.12.2020                                                              *
- * License: This program is free software: you can redistribute it and/or modify *
- * it under the terms of the GNU General Public License as published by          *
- * the Free Software Foundation, either version 3 of the License, or             *
- * (at your option) any later version.                                           *
- *                                                                               *
- * This program is distributed in the hope that it will be useful,               *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of                *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                 *
- * GNU General Public License for more details.                                  *
- *                                                                               *
- * You should have received a copy of the GNU General Public License             *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.         *
+ * Description: Splash screen with rotate gear and booting log 			 *
+ * Author: fhudint                                                               *
+ * Date: -                                                              	 *
+ * License: -									 *
  *********************************************************************************/
 
 ############################### BACKGROUND #####################################
@@ -29,15 +18,12 @@ background_ratio = background_image.GetHeight() / background_image.GetWidth();
 factor = 0;
 
 if (ratio > background_ratio) {
-
 	factor = screen_height / background_image.GetHeight();
-
-}
+	}
 else {
-	
 	factor = screen_width / background_image.GetWidth();
-	
-}
+	}
+
 /*scaled = background_image.Scale(background_image.GetWidth() * factor, background_image.GetHeight() * factor);
 background_sprite = Sprite(scaled);
 background_sprite.SetX(screen_x + screen_width / 2 - scaled.GetWidth() / 2);
