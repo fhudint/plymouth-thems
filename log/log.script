@@ -1,10 +1,10 @@
 /*********************************************************************************
- * Theme Name: log				                                 *
- * Version: 1.0                                                                  *
- * Description: Splash screen with rotate gear and booting log 			 *
- * Author: fhudint                                                               *
- * Date: -                                                              	 *
- * License: -									 *
+ * Theme Name: log
+ * Version: 1.0
+ * Description: Splash screen with rotate gear and booting log
+ * Author: fhudint
+ * Based on: COGWHEEL-A-SPINNER-LOG-PGR-2-GRAY by DUKE93 (22.12.2020)
+ * License: GNU GPL v3 or later <http://www.gnu.org/licenses/>
  *********************************************************************************/
 
 ############################### BACKGROUND #####################################
@@ -35,17 +35,6 @@ background.sprite.SetImage(background.image);
 background.sprite.SetPosition(Window.GetX(), Window.GetY(), 1);
 ################################################################################
 
-################################## LOGO ########################################
-/*Window.SetBackgroundTopColor(0, 0, 0);
-Window.SetBackgroundBottomColor(0, 0, 0);
-
-logo.image = Image("SYSTEM-LOGO.PNG");
-logo.sprite = Sprite(logo.image);
-logo.sprite.SetX (Window.GetWidth()  / 1 - logo.image.GetWidth()  / 0.88);
-logo.sprite.SetY (Window.GetHeight() / 1 - logo.image.GetHeight() / 0.65);
-logo.opacity_angle = 0;*/
-################################################################################
-
 ################################# BACKDROP #####################################
 backdrop = Image("LOGO_BOX.PNG");
 boot = Sprite(backdrop);
@@ -57,15 +46,9 @@ boot_y = Window.GetHeight() / 2  -  backdrop.GetHeight() / 1.5;                 
 boot.SetPosition( boot_x, boot_y, 1);
 ################################################################################
 
-################################## LOGO ########################################
+############################### BACKGROUND COLOR ###############################
 Window.SetBackgroundTopColor(0, 0, 0);
 Window.SetBackgroundBottomColor(0, 0, 0);
-
-logo.image = Image("SYSTEM-LOGO.PNG");
-logo.sprite = Sprite(logo.image);
-logo.sprite.SetX (boot_x + backdrop.GetWidth()/2 - logo.image.image.GetWidth()/2);
-logo.sprite.SetY (Window.GetHeight() / 1 - logo.image.GetHeight() / 0.65);
-logo.opacity_angle = 0;
 ################################################################################
 
 ################################# PROGRESS #####################################
