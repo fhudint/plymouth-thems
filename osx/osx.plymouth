@@ -1,6 +1,6 @@
 [Plymouth Theme]
 Name=osx
-Description=Apple Mac Plymouth theme by - mr. fhudint
+Description=macOS-style boot splash (fan-made, not affiliated with Apple Inc.) by fhudint
 ModuleName=script
 
 [script]
