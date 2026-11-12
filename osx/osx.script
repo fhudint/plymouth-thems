@@ -34,7 +34,7 @@ logo.image  = load_image("boot.png");
 logo.sprite = Sprite(logo.image);
 logo.sprite.SetX(center_x - logo.image.GetWidth()  / 2);
 logo.sprite.SetY(center_y - logo.image.GetHeight() / 2);
-logo.sprite.SetOpacity(1);
+logo.sprite.SetOpacity(0);   # starts black, faded in by refresh_callback below
 
 #----------------------------------------- Password dialog --------------------------------
 
@@ -147,6 +147,7 @@ if (Plymouth.GetMode() == "boot")
   # Vertical position: 65% of the screen height
   progress_box.y = Window.GetY() + Window.GetHeight() * 0.65 - progress_box.image.GetHeight() / 2;
   progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 0);
+  progress_box.sprite.SetOpacity(0);
 
   progress_bar.original_image = load_image("progress_bar.png");
   progress_bar.sprite = Sprite();
@@ -155,11 +156,13 @@ if (Plymouth.GetMode() == "boot")
   progress_bar.y = progress_box.y
                    + (progress_box.image.GetHeight() - progress_bar.original_image.GetHeight()) / 2;
   progress_bar.sprite.SetPosition(progress_bar.x, progress_bar.y, 1);
+  progress_bar.sprite.SetOpacity(0);
 
   fun progress_callback(duration, progress)
   {
     local.width = Math.Int(progress_bar.original_image.GetWidth() * progress);
-    if (width < 1 || width == progress_bar.width)
+    # Never move the bar backwards (progress can restart after the initramfs -> rootfs handoff)
+    if (width < 1 || width <= progress_bar.width)
       return;
     progress_bar.width = width;
     progress_bar.image = progress_bar.original_image.Scale(width, progress_bar.original_image.GetHeight());
@@ -168,6 +171,42 @@ if (Plymouth.GetMode() == "boot")
 
   Plymouth.SetBootProgressFunction(progress_callback);
 }
+
+#----------------------------------------- Fade in / black at the end --------------------------------
+# Start: black screen, then the logo (and progress bar) fade in.
+# End:   everything is hidden, so the screen stays black until the desktop appears.
+
+FADE_IN_FRAMES = 25;   # refresh runs ~50 times per second => about 0.5 second
+fade_frame = 0;
+quitting   = 0;
+
+fun set_scene_opacity(opacity)
+{
+  logo.sprite.SetOpacity(opacity);
+  if (progress_box.sprite)
+    progress_box.sprite.SetOpacity(opacity);
+  if (progress_bar.sprite)
+    progress_bar.sprite.SetOpacity(opacity);
+}
+
+fun refresh_callback()
+{
+  if (quitting || fade_frame >= FADE_IN_FRAMES)
+    return;
+  fade_frame++;
+  set_scene_opacity(fade_frame / FADE_IN_FRAMES);
+}
+
+fun quit_callback()
+{
+  quitting = 1;
+  set_scene_opacity(0);
+  if (global.dialog)
+    dialog_opacity(0);
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+Plymouth.SetQuitFunction(quit_callback);
 
 #----------------------------------------- Messages --------------------------------
 
