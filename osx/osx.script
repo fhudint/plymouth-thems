@@ -189,12 +189,25 @@ fun set_scene_opacity(opacity)
     progress_bar.sprite.SetOpacity(opacity);
 }
 
+keepalive_flip = 0;
+
 fun refresh_callback()
 {
-  if (quitting || fade_frame >= FADE_IN_FRAMES)
+  if (quitting)
     return;
-  fade_frame++;
-  set_scene_opacity(fade_frame / FADE_IN_FRAMES);
+
+  if (fade_frame < FADE_IN_FRAMES)
+  {
+    fade_frame++;
+    set_scene_opacity(fade_frame / FADE_IN_FRAMES);
+    return;
+  }
+
+  # Keep redrawing until quit. A static scene leaves the other scanout buffer(s)
+  # holding an old frame (empty progress bar), which flashes during the
+  # handoff to SDDM and to the desktop. A 1% opacity toggle is invisible.
+  keepalive_flip = 1 - keepalive_flip;
+  logo.sprite.SetOpacity(1 - keepalive_flip * 0.01);
 }
 
 fun quit_callback()
