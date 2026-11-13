@@ -101,6 +101,32 @@ sudo ./preview.sh osx 5   # show an installed theme for 5 seconds, then restore 
 
 ---
 
+## 🩹 Troubleshooting
+
+<details>
+<summary><b>The splash "restarts" before the login screen, or the last boot frame flashes after login</b></summary>
+
+<br>
+
+On systems that boot on `simpledrm` and then switch to the real GPU driver (e.g. `i915`), Plymouth may draw the splash twice and flash an old frame during the handoff to the display manager. This affects static themes such as `osx` and the stock `spinner`; animated ones like `connect` hide it. Tell Plymouth to wait for the real GPU driver instead:
+
+```ini
+# /etc/plymouth/plymouthd.conf
+[Daemon]
+Theme=osx
+UseSimpledrmNoLuks=0
+```
+
+```bash
+sudo dracut -f   # Fedora; Debian/Ubuntu: sudo update-initramfs -u
+```
+
+The splash then appears about 1-2 seconds later, but only once. This is a system setting, so `install.sh` does not change it for you.
+
+</details>
+
+---
+
 ## 🙏 Credits
 
 - **`connect`** comes from [adi1090x/plymouth-themes](https://github.com/adi1090x/plymouth-themes) by Aditya Shakya ([@adi1090x](https://github.com/adi1090x)). This repo is not a fork; only the `connect` pack was taken from the 80+ packs in that repository. The original license is in [connect/LICENSE](connect/LICENSE).
