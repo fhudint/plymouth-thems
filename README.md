@@ -36,9 +36,9 @@
     <th align="center">⚙️ log</th>
   </tr>
   <tr>
-    <td><img src="docs/previews/osx.png" alt="osx theme preview" width="100%"></td>
-    <td><img src="docs/previews/connect.gif" alt="connect theme preview" width="100%"></td>
-    <td><img src="docs/previews/log.png" alt="log theme preview" width="100%"></td>
+    <td><img src="docs/previews/osx.png" alt="osx theme preview" width="260" height="195"></td>
+    <td><img src="docs/previews/connect.gif" alt="connect theme preview" width="260" height="195"></td>
+    <td><img src="docs/previews/log.png" alt="log theme preview" width="260" height="195"></td>
   </tr>
 </table>
 
