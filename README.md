@@ -31,14 +31,14 @@
 
 <table>
   <tr>
-    <th align="center">🍎 osx</th>
-    <th align="center">✨ connect</th>
-    <th align="center">⚙️ log</th>
+    <th align="center" width="33%">🍎 osx</th>
+    <th align="center" width="33%">✨ connect</th>
+    <th align="center" width="33%">⚙️ log</th>
   </tr>
   <tr>
-    <td><img src="docs/previews/osx.png" alt="osx theme preview" width="260" height="195"></td>
-    <td><img src="docs/previews/connect.gif" alt="connect theme preview" width="260" height="195"></td>
-    <td><img src="docs/previews/log.png" alt="log theme preview" width="260" height="195"></td>
+    <td><img src="docs/previews/osx.png" alt="osx theme preview" width="240" height="180"></td>
+    <td><img src="docs/previews/connect.gif" alt="connect theme preview" width="240" height="180"></td>
+    <td><img src="docs/previews/log.png" alt="log theme preview" width="240" height="180"></td>
   </tr>
 </table>
 
