@@ -29,17 +29,18 @@
 
 <div align="center">
 
-### 🍎 osx
-
-<img src="docs/previews/osx.png" alt="osx theme preview" width="600">
-
-### ✨ connect
-
-<img src="docs/previews/connect.gif" alt="connect theme preview" width="400">
-
-### ⚙️ log
-
-<img src="docs/previews/log-1.png" alt="log theme preview 1" width="400"> <img src="docs/previews/log-2.png" alt="log theme preview 2" width="400">
+<table>
+  <tr>
+    <th align="center">🍎 osx</th>
+    <th align="center">✨ connect</th>
+    <th align="center">⚙️ log</th>
+  </tr>
+  <tr>
+    <td><img src="docs/previews/osx.png" alt="osx theme preview" width="100%"></td>
+    <td><img src="docs/previews/connect.gif" alt="connect theme preview" width="100%"></td>
+    <td><img src="docs/previews/log.png" alt="log theme preview" width="100%"></td>
+  </tr>
+</table>
 
 </div>
 
